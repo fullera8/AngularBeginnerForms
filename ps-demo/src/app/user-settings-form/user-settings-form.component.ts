@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { UserSettings } from '../data/user-settings';
 
 @Component({
@@ -10,11 +11,11 @@ export class UserSettingsFormComponent implements OnInit {
 
   //One way data binding to the interface
   originalUserSettings: UserSettings = {
-    name: "Alex",
-    subscribeEmail: true,
-    interfaceStyle: 'dark',
-    subscriptionType: 'Annual',
-    notes: "notes notes notes..."
+    name: null,
+    subscribeEmail: null,
+    interfaceStyle: null,
+    subscriptionType: null,
+    notes: null
   };
 
   //clones originalUserSettings
@@ -25,4 +26,7 @@ export class UserSettingsFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onSubmit(form: NgForm) {
+    console.log('in onSubmit: ', form.valid);
+  }
 }
