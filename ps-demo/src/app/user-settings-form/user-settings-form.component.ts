@@ -9,13 +9,16 @@ import { UserSettings } from '../data/user-settings';
 export class UserSettingsFormComponent implements OnInit {
 
   //One way data binding to the interface
-  userSettings: UserSettings = {
+  OriginaluserSettings: UserSettings = {
     name: "Alex",
     subscribeEmail: true,
     interfaceStyle: 'dark',
     subscriptionType: 'Annual',
     notes: "notes notes notes..."
   };
+
+  //clones originalUserSettings
+  userSettings: UserSettings = { ...this.OriginaluserSettings };
 
   constructor() { }
 
