@@ -1,5 +1,6 @@
 import { Component, NgModule, OnInit } from '@angular/core';
 import { NgForm, NgModel } from '@angular/forms';
+import { DataService } from '../data/data.service';
 import { UserSettings } from '../data/user-settings';
 
 @Component({
@@ -21,7 +22,7 @@ export class UserSettingsFormComponent implements OnInit {
   //clones originalUserSettings
   userSettings: UserSettings = { ...this.originalUserSettings };
 
-  constructor() { }
+  constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
   }
@@ -29,6 +30,10 @@ export class UserSettingsFormComponent implements OnInit {
   //Validation method that triggers only after the form submits
   onSubmit(form: NgForm) {
     console.log('in onSubmit: ', form.valid);
+    this.dataService.postUserSettingsForm(this.userSettings).subscribe(
+      r => console.log('success: ', r),
+      e => console.log('Error: ', e)
+    );
   }
 
   //Demo that any custom front end can happen when the field blurs
