@@ -30,6 +30,11 @@ export class UserSettingsFormComponent implements OnInit {
   singleModel:String = "On";
   startDate!: Date;
   startTime!: Date;
+  userRating: number = 0;
+  percent: number = 0.0;
+  overStar: number | undefined;
+  maxRating: number = 10;
+  isReadonly: boolean = false;
 
   constructor(private dataService: DataService) { }
 
@@ -37,6 +42,16 @@ export class UserSettingsFormComponent implements OnInit {
     this.subscriptionTypes = this.dataService.getSubscriptionTypes();
     this.startDate = new Date();
     this.startTime = new Date();
+  }
+
+  //ngx-bootstrap rating methods
+  hoveringOver(value: number): void {
+    this.overStar = value;
+    this.percent = (value / this.maxRating) * 100;
+  }
+
+  resetStar(): void {
+    this.overStar = void 0;
   }
 
   //Demo that any custom front end can happen when the field blurs

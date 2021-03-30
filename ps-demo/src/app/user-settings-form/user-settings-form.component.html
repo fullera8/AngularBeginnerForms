@@ -39,6 +39,14 @@
       <timepicker [(ngModel)]="startTime" name="startTime" id="startTime"></timepicker>
     </div>
 
+    <!-- ngx-bootstrap rating picker -->
+    <div class="form-group">
+      <label for="userRating">User Rating</label>
+      <rating [(ngModel)]="userRating" [max]="maxRating" [readonly]="isReadonly" name="userRating"
+        (onHover)="hoveringOver($event)" (onLeave)="resetStar()">
+      </rating>
+    </div>
+
     <!-- Check box demo -->
     <div class="form-check form-group">
       <input class="form-check-input" type="checkbox" id="subscribeEmail" name="subscribeEmail" [(ngModel)]="userSettings.subscribeEmail">
