@@ -2,10 +2,14 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { ButtonsModule } from 'ngx-bootstrap/buttons'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { UserSettingsFormComponent } from './user-settings-form/user-settings-form.component';
+
+import { ButtonsModule } from 'ngx-bootstrap/buttons'
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+
 
 @NgModule({
   declarations: [
@@ -16,7 +20,9 @@ import { UserSettingsFormComponent } from './user-settings-form/user-settings-fo
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    ButtonsModule
+    BrowserAnimationsModule,
+    ButtonsModule.forRoot(),
+    BsDatepickerModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -19,9 +19,20 @@
     <!-- Add 3rd party ngx-bootstrapbutton -->
     <button type="button" class="btn btn-primary" name="singleModel"
             [(ngModel)]="singleModel" btnCheckbox
-            btnCheckboxTrue="On" btnCheckboxFalse="Off">
+            >
       {{ singleModel }}
     </button>
+
+    <!-- Add ngx-bootsrap datepicker -->
+    <div class="form-group">
+      <label for="startDate">Start Date</label>
+      <input type="text"
+        placeholder="Start Date"
+        class="form-control"
+        [(ngModel)]="startDate" name="startDate" id="startDate"
+        bsDatepicker>
+    </div>
+
 
     <!-- Check box demo -->
     <div class="form-check form-group">

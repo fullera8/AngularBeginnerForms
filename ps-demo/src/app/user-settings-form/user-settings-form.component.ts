@@ -27,12 +27,14 @@ export class UserSettingsFormComponent implements OnInit {
   postErrorMessage: String = '';
   subscriptionTypes!: Observable<String[]>;
   //ngx variables
-  singleModel = "On";
+  singleModel:String = "On";
+  startDate!: Date;
 
   constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
     this.subscriptionTypes = this.dataService.getSubscriptionTypes();
+    this.startDate = new Date();
   }
 
   //Demo that any custom front end can happen when the field blurs
