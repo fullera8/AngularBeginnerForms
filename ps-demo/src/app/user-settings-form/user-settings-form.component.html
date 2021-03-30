@@ -16,6 +16,13 @@
       </div>
     </div>
 
+    <!-- Add 3rd party ngx-bootstrapbutton -->
+    <button type="button" class="btn btn-primary" name="singleModel"
+            [(ngModel)]="singleModel" btnCheckbox
+            btnCheckboxTrue="On" btnCheckboxFalse="Off">
+      {{ singleModel }}
+    </button>
+
     <!-- Check box demo -->
     <div class="form-check form-group">
       <input class="form-check-input" type="checkbox" id="subscribeEmail" name="subscribeEmail" [(ngModel)]="userSettings.subscribeEmail">

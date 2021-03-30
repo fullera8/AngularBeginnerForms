@@ -22,9 +22,12 @@ export class UserSettingsFormComponent implements OnInit {
 
   //clones originalUserSettings
   userSettings: UserSettings = { ...this.originalUserSettings };
+  //Data variables
   postError: boolean = false;
   postErrorMessage: String = '';
   subscriptionTypes!: Observable<String[]>;
+  //ngx variables
+  singleModel = "On";
 
   constructor(private dataService: DataService) { }
 
