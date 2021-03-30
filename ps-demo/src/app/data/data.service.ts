@@ -10,6 +10,10 @@ export class DataService {
 
   constructor(private http: HttpClient) { }
 
+  getSubscriptionTypes() {
+    return of(['Monthly', 'Annual', 'Lifetime']);
+  }
+
   postUserSettingsForm(userSettings: UserSettings) : Observable<any>
   {
     //IMPORTANT: This is how you make the API calls, change "URL" to the server URL
