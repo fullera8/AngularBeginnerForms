@@ -50,18 +50,18 @@ export class UserSettingsFormComponent implements OnInit {
 
   //Validation method that triggers only after the form submits
   onSubmit(form: NgForm) {
-    console.log('in onSubmit: ', form.valid);
+    console.log('in onSubmit: ', form.value);
 
-    if (form.valid) {
-      this.dataService.postUserSettingsForm(this.userSettings).subscribe(
-        r => console.log('Success: ', r),
-        e => this.onHttpError(e)//console.log('Error: ', e)
-      );
-    }
-    else {
-      this.postError = true;
-      this.postErrorMessage = 'Please fix the above errors';
-    }
+    // if (form.valid) {
+    //   this.dataService.postUserSettingsForm(this.userSettings).subscribe(
+    //     r => console.log('Success: ', r),
+    //     e => this.onHttpError(e)//console.log('Error: ', e)
+    //   );
+    // }
+    // else {
+    //   this.postError = true;
+    //   this.postErrorMessage = 'Please fix the above errors';
+    // }
 
 
   }
