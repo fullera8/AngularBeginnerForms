@@ -21,23 +21,42 @@ export class UserSettingsFormComponent implements OnInit {
 
   //clones originalUserSettings
   userSettings: UserSettings = { ...this.originalUserSettings };
+  postError: boolean = false;
+  postErrorMessage: String = '';
 
   constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
   }
 
-  //Validation method that triggers only after the form submits
-  onSubmit(form: NgForm) {
-    console.log('in onSubmit: ', form.valid);
-    this.dataService.postUserSettingsForm(this.userSettings).subscribe(
-      r => console.log('success: ', r),
-      e => console.log('Error: ', e)
-    );
-  }
-
   //Demo that any custom front end can happen when the field blurs
   onBlur(field: NgModel) {
     console.log("in onBlur", field.valid);
+  }
+
+  //Error handling
+  onHttpError(errorResponse: any)
+  {
+    console.log('Error: ', errorResponse);
+    this.postError = true;
+    this.postErrorMessage = errorResponse.error.errorMessage;
+  }
+
+  //Validation method that triggers only after the form submits
+  onSubmit(form: NgForm) {
+    console.log('in onSubmit: ', form.valid);
+
+    if (form.valid) {
+      this.dataService.postUserSettingsForm(this.userSettings).subscribe(
+        r => console.log('Success: ', r),
+        e => this.onHttpError(e)//console.log('Error: ', e)
+      );
+    }
+    else {
+      this.postError = true;
+      this.postErrorMessage = 'Please fix the above errors';
+    }
+
+
   }
 }
